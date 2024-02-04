@@ -13,11 +13,11 @@ const workSlides = {
         },
         {
           title: "title",
-          path: "/thumb.jpg",
+          path: "/thumb3.jpg",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
+          path: "/thumb4.png",
         },
       ],
     },
