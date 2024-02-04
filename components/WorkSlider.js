@@ -9,7 +9,7 @@ const workSlides = {
         },
         {
           title: "title",
-          path: "/thumb.png",
+          path: "/thumb2.png",
         },
         {
           title: "title",
