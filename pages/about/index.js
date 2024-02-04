@@ -12,14 +12,14 @@ const aboutData = [
       {
         title: "Web Development",
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <SiTailwindcss />,
-          <FaJs />,
-          <SiTypescript />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <BiLogoRedux />,
+          <FaHtml5 key="html" />,
+          <FaCss3 key="css" />,
+          <SiTailwindcss key="tailwind" />,
+          <FaJs key="js" />,
+          <SiTypescript key="typescript" />,
+          <FaReact key="react" />,
+          <SiNextdotjs key="nextjs" />,
+          <BiLogoRedux key="redux" />,
         ],
       },
     ],
@@ -48,18 +48,17 @@ const aboutData = [
 // components
 import Circles from "../../components/Circles";
 
-//frmaer motion
+// framer motion
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { useState } from "react";
 
-// couinter
-
+// counter
 import CountUp from "react-countup";
 
 const About = () => {
   const [index, setIndex] = useState(0);
-  console.log(index);
+
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
       <Circles className="hidden xl:flex absolute bottom-0 -left-[370px]" />
@@ -82,9 +81,9 @@ const About = () => {
             exit="hidden"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            Hi everyone, I am web developer.I am a junior programmer. I was born
-            2006 years old. My future dream is to study the front end field
-            perfectly, help people and most importantly take my parents on a
+            Hi everyone, I am a web developer. I am a junior programmer. I was
+            born in 2006. My future dream is to study the front-end field
+            perfectly, help people, and most importantly take my parents on a
             pilgrimage.
           </motion.p>
           {/* counters */}
@@ -111,7 +110,7 @@ const About = () => {
                   <CountUp start={0} end={2} duration={5} />+
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Statisfied clients
+                  Satisfied clients
                 </div>
               </div>
               {/* project */}
@@ -120,14 +119,14 @@ const About = () => {
                   <CountUp start={0} end={13} duration={5} />+
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Fineshed project
+                  Finished projects
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
         {/* info */}
-        <motion.dev
+        <motion.div
           variants={fadeIn("left", 0.4)}
           initial="hidden"
           animate="show"
@@ -135,47 +134,41 @@ const About = () => {
           className="flex flex-col w-full xl:max-w-[48%] h-[480px]"
         >
           <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
-            {aboutData.map((item, itemIndex) => {
-              return (
-                <div
-                  key={itemIndex}
-                  className={`${
-                    index === itemIndex &&
-                    "text-accent after:w-[100%] key after:bg-accent after:transition-all after:duration-300"
-                  }  capitalize cursor-pointer xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                  onClick={() => setIndex(itemIndex)}
-                >
-                  {item.title}
-                </div>
-              );
-            })}
+            {aboutData.map((item, itemIndex) => (
+              <div
+                key={itemIndex}
+                className={`${
+                  index === itemIndex &&
+                  "text-accent after:w-[100%] key after:bg-accent after:transition-all after:duration-300"
+                } capitalize cursor-pointer xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
+                onClick={() => setIndex(itemIndex)}
+              >
+                {item.title}
+              </div>
+            ))}
           </div>
-          <div className=" py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemIndex) => {
-              return (
-                <div
-                  key={itemIndex}
-                  className="flex-1 key flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
-                >
-                  {/* title */}
-                  <div className="font-light mb-2 md:mb-0">{item.title}</div>
-                  <div className="hidden md:flex ">-</div>
-                  <div className=" ">{item.stage}</div>
-                  {/* icons */}
-                  <div className="flex gap-x-4">
-                    {item.icons?.map((icon, itemIndex) => {
-                      return (
-                        <div key={itemIndex} className="text-2xl text-white ">
-                          {icon}
-                        </div>
-                      );
-                    })}
-                  </div>
+          <div className="py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
+            {aboutData[index].info.map((item, itemIndex) => (
+              <div
+                key={itemIndex}
+                className="flex-1 key flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
+              >
+                {/* title */}
+                <div className="font-light mb-2 md:mb-0">{item.title}</div>
+                <div className="hidden md:flex">-</div>
+                <div className="">{item.stage}</div>
+                {/* icons */}
+                <div className="flex gap-x-4">
+                  {item.icons?.map((icon, iconIndex) => (
+                    <div key={iconIndex} className="text-2xl text-white ">
+                      {icon}
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
-        </motion.dev>
+        </motion.div>
       </div>
     </div>
   );
